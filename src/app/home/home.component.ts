@@ -45,6 +45,7 @@ import {
 export class HomeComponent implements OnInit {
 
   constructor(private MyserviceServiceref: MyserviceService, @Inject('Globalval') private Globalvalref, @Inject("secondGlobVar") private secondGlobvarRef) {
+    this.create_promise()
   }
 
   ngOnInit(): void {
@@ -94,5 +95,48 @@ export class HomeComponent implements OnInit {
       console.log(res)
     })
   }
+
+  //aync pipe
+  public Mypromisefunc: Promise<string> | null = null
+  public resolve: Function | null = null
+  create_promise() {
+    console.log("creating promise func...")
+    this.Mypromisefunc = new Promise((resolve, reject) => {
+      this.resolve = resolve
+
+    })
+  }
+
+  callasync() {
+    this.resolve("Hi I am from promise")
+  }
+
+  //using in built in pipes
+  public myNumber = 12.222
+  public myJSON = { name: "manju", age: 23 }
+  public json_items = { name: "manju", age: 23, address: "Hassan" }
+
+
+  //form
+  public C: number
+  public F: number
+
+  updateCelsius() {
+    console.log("will update C...", this.F)
+    this.C = this.F+2
+    if(this.F == null){
+      this.C = null
+    }
+  }
+
+  updateFah() {
+    console.log("will update F...")
+    this.F = this.C-2
+    if(this.C == null){
+      this.F = null
+    }
+  }
+
+
 
 }

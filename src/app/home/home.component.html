@@ -1,23 +1,119 @@
 <h1 appMyfirstdirective>This is home component!<br>(color applied using custom <b>directive</b>)</h1>
 <hr>
 <hr>
-<h3>Data projection: Below data is projected from parent to child component:</h3>
+
+
+
+
+
+
+
+<h3>
+    <h1>Content Projecton:</h1> Data projection: Below data is projected from parent to child component:
+</h3>
 <app-child>
     <h1 class="headerpart">Head</h1>
     <h1 class="bodypart">Body...........</h1>
 </app-child>
 <hr>
 <hr>
+
+
+
+
+
+
+
 <h3>This is PIPE implementation in angular</h3>
 <h3>Below data coming from PIPE: myfirstpip</h3>
 <!-- mainly used for data trsnsformations, like string to int or vise-versa -->
 <h3>{{"Mr." | myfirstpip:"Manjunath":"KO"}}</h3>
 <hr>
 <hr>
-<h2>Below color is coming from animations of this component</h2>
+
+
+
+
+
+
+<h2>Below font color can be changed using angular animations of this component</h2>
 <div>
     <p [@myAnimations]="color">This color applied using animations</p>
     <button (click)="changeFontColor()">Change above text color</button>
 </div>
 <hr>
 <hr>
+
+
+
+
+
+<h2>Calling async function using async pipe</h2>
+<button (click)="callasync()">call sync func</button>
+<p>{{Mypromisefunc | async}}</p>
+<hr>
+<hr>
+
+
+
+
+
+
+<h2>Using built in pipes:</h2>
+<h3>number</h3>
+<p>{{myNumber | number: '2.0-2'}}</p>
+<hr>
+<h3>json</h3>
+<p>{{myJSON | json}}</p>
+<hr>
+<h3>uppercase</h3>
+<p>{{"sasaasaa" | uppercase}}</p>
+<hr>
+<h3>lowercase</h3>
+<p>{{"QQQQQQQSSSS" | lowercase}}</p>
+<hr>
+<h3>keyvalue</h3>
+<p *ngFor="for let item of json_items | keyvalue">
+    {{item.key}} : {{item.value}}
+</p>
+<hr>
+<h3>Slice</h3>
+<p>{{"ABCDEFGH" | slice:2:4}}</p>
+<hr>
+<h3>Titlecase</h3>
+<p>{{"manjunath" | titlecase}}</p>
+<hr>
+<hr>
+
+
+
+
+
+
+<h2>Angualr two way data binding in form using [(ngModel)] and (ngModelChange):</h2>
+<div action="">
+    <div style="display: flex; justify-content: space-around;">
+        <div>
+            <label for="celsius">Celsius: (minus 2 from F)</label>
+            <input type="number" [(ngModel)]="C" [value]="C" (ngModelChange)="updateFah()" name="celsius">
+        </div>
+        <div>
+            <label for="Fahrenheit">Fahrenheit: (add 2 to C) </label>
+            <input type="number" [(ngModel)]="F" (ngModelChange)="updateCelsius()" [value]="F" name="fahrenheit">
+        </div>
+    </div>
+</div>
+<hr>
+<hr>
+
+
+
+
+
+<h2>Template driven forms</h2>
+<hr>
+<hr>
+
+
+
+<h2>Module driven forms(ngForm)</h2>

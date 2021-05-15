@@ -10,6 +10,7 @@ import { ChildComponent } from './child/child.component';
 import { MyserviceService } from './myservice.service';
 import { MyfirstpipPipe } from './myfirstpip.pipe';
 import { MyfirstdirectiveDirective } from './myfirstdirective.directive'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MyfirstdirectiveDirective } from './myfirstdirective.directive'
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [MyserviceService, { provide: 'Globalval', useValue: "This is a First global value" }, { provide: "secondGlobVar", useValue: "This is a second global value" }],
   bootstrap: [AppComponent]
