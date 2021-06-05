@@ -28,12 +28,17 @@ export class MyserviceService {
 
   getRequest() {
     const url = "api/hello"
-    const headers = new HttpHeaders({
+    return this.http.get(url)
+  }
+}
+
+postRequest(){
+   const url = "api/create"
+   const headers = new HttpHeaders({
       "Content-Type": "application/json"
     })
-
-    return this.http.get(url, { headers: headers })
-  }
+   const data = {"name":"manju", "age":23}
+   return this.http.post(url, data, { headers: headers })
 }
 
 
