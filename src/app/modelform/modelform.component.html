@@ -1,0 +1,77 @@
+<h2>Model Driven Form</h2>
+<button>Back to home</button>
+<br><br>
+
+<!-- formGroup is a directive from ReactiveFormsModule linked to the form element -->
+<!-- formControlName is also a directive from ReactiveFormsModule linked to the each input -->
+<!-- We can create a nested form using fieledset or div -->
+
+<form [formGroup]="myform" (ngSubmit)="onSubmitfunc()">
+
+    <!-- Nested Form group -->
+    <fieldset formGroupName="name">
+        <div>
+            <label>First name </label>
+            <input type="text" formControlName="firstname">
+        </div>
+        <br>
+        <div>
+            <label for="">Last name </label>
+            <input type="text" formControlName="lastname">
+        </div>
+    </fieldset>
+    <!-- ------------->
+
+    <br>
+
+    <div [ngClass]='{
+        "danger-border": myform.controls.email.invalid 
+    }'>
+        <label for="">Email </label>
+        <input type="email" formControlName="email">
+    </div>
+
+    <!-- we can check which validator is failing using 'errors' and convey message to user
+    accordingly
+     -->
+    <div *ngIf="myform.controls.email.errors && (myform.controls.email.dirty || myform.controls.email.invalid)">
+        <p *ngIf="myform.controls.email.dirty && myform.controls.email.errors.required">Email required</p>
+        <p *ngIf="myform.controls.email.dirty && myform.controls.email.errors.pattern">Email must have @ charecter</p>
+    </div>
+
+    <!-- we can check if the state of the input is changed by user, or if the
+    user touched the input field, or the input data is valid or not usig input
+    control flags -->
+
+    <!-- Available flags: -->
+    <!-- dirty or pristine
+        touched or untouched
+        valid or invalid
+    -->
+    <!-- Example for email field -->
+    <pre>Dirty? {{myform.controls.email.dirty}}</pre>
+    <pre>Pristine? {{myform.controls.email.pristine}}</pre>
+    <pre>Touched? {{myform.controls.email.touched}}</pre>
+    <pre>Untouched? {{myform.controls.email.untouched}}</pre>
+    <pre>Valid? {{myform.controls.email.valid}}</pre>
+    <pre>Invalid? {{myform.controls.email.invalid}}</pre>
+
+    <br>
+    <div>
+        <label for="">Password</label>
+        <input type="password" formControlName="password">
+    </div>
+    <div>
+        <label for="">Language</label>
+        <select formControlName="language">
+            <option value="">Please select the Language</option>
+            <option *ngFor="let lang of langs" [value]="lang">{{lang}}</option>
+        </select>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>
+<br>
+<hr>
+<h2>Form Output</h2>
+<p>{{myform.value | json}}</p>

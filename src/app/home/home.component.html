@@ -24,7 +24,7 @@
 
 
 
-<h3>This is PIPE implementation in angular</h3>
+<h3>This is Custom PIPE implementation in angular</h3>
 <h3>Below data coming from PIPE: myfirstpip</h3>
 <!-- mainly used for data trsnsformations, like string to int or vise-versa -->
 <h3>{{"Mr." | myfirstpip:"Manjunath":"KO"}}</h3>
@@ -49,7 +49,7 @@
 
 
 <h2>Calling async function using async pipe</h2>
-<button (click)="callasync()">call sync func</button>
+<button (click)="callasync()">call async func</button>
 <p>{{Mypromisefunc | async}}</p>
 <hr>
 <hr>
@@ -107,13 +107,11 @@
 <hr>
 
 
-
-
-
-<h2>Template driven forms</h2>
+<h2>Model driven form(ngForm)</h2>
+<button onclick="window.location.assign('modalform')">Open model driven form</button>
 <hr>
 <hr>
-
-
-
-<h2>Module driven forms(ngForm)</h2>
+<h2>Template driven form</h2>
+<button onclick="window.location.assign('templateform')">Open template driven form</button>
+<hr>
+<hr>

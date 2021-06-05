@@ -1,0 +1,27 @@
+fieldset,
+form> :not(:last-child) {
+
+  justify-content: space-between;
+
+}
+
+fieldset,
+form>div {
+  display: flex;
+  margin: 10px;
+  color: rgb(43, 15, 201);
+  width: 100%;
+}
+
+form>div>input {
+  width: 80%;
+}
+
+
+h2 {
+  text-align: center;
+}
+
+.danger-border {
+  background-color: rgba(238, 0, 0, 0.589);
+}

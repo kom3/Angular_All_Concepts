@@ -87,7 +87,7 @@ export class HomeComponent implements OnInit {
       error(data) { console.log(data) },
       complete() { }
     });
-    // unsubscribeObj.unsubscribe()
+    // unsubscribeObj.unsubscribe() // destroy the object one the job done.
   }
 
   callGetApifromService() {
@@ -96,7 +96,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  //aync pipe
+  //aync pipe 
+  //   AsyncPipe is a convenience function which makes rendering data from observables and promises much easier.
+  // For promises it automatically adds a then callback and renders the response.
+  // For Observables it automatically subscribes to the observable, renders the output and then also unsubscribes when the component is destroyed so we don’t need to handle the clean up logic ourselves.
+  // with aync we can use either Promise or Observable(If we use Observalbe with aync pipe in template, it will automatically unsubscribe once the job done)
   public Mypromisefunc: Promise<string> | null = null
   public resolve: Function | null = null
   create_promise() {
@@ -123,20 +127,42 @@ export class HomeComponent implements OnInit {
 
   updateCelsius() {
     console.log("will update C...", this.F)
-    this.C = this.F+2
-    if(this.F == null){
+    this.C = this.F + 2
+    if (this.F == null) {
       this.C = null
     }
   }
 
   updateFah() {
     console.log("will update F...")
-    this.F = this.C-2
-    if(this.C == null){
+    this.F = this.C - 2
+    if (this.C == null) {
       this.F = null
     }
   }
 
-
-
 }
+
+// Custom decorators (just a function): here in this example we are adding a property to the class TestDecorator
+// using defineProperty during  run time
+
+
+// this decorator will not take any arguments
+
+function mydecorator(target) {
+  console.log("Indide mydecorator........")
+  target.prototype.name = "Someone else"
+}
+
+@mydecorator
+class TestDecoraror {
+  name: string
+  age: number
+  constructor(age) {
+    this.age = age
+  }
+}
+let testDecorarorobj = new TestDecoraror(23)
+// this is name property added by decorator
+console.log("Outside class", testDecorarorobj.name)
+
