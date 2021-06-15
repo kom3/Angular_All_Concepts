@@ -24,7 +24,7 @@ export class ModelformComponent implements OnInit {
   // Create a Template form and Model form:
   // 1. Create a form template in html
   // 2. Create a form model in component like below using FormGroup and FormControl
-  // 3. Link a form group with from template
+  // 3. Link a form group with form template
   // 4. To do that import ReactiveFormsModule and register it in ngModule (app.module.ts)
   // 5. and Attach formGroup directive(comes from ReactiveFormsModule) in form template and assign myform instance to it [formGroup]="myform"
   // [formGroup]="myform" helps to link form template to form model
