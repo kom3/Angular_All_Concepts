@@ -150,7 +150,7 @@ export class HomeComponent implements OnInit {
 // this decorator will not take any arguments
 
 function mydecorator(target) {
-  console.log("Indide mydecorator........")
+  console.log("Inside mydecorator........")
   target.prototype.name = "Someone else"
 }
 
